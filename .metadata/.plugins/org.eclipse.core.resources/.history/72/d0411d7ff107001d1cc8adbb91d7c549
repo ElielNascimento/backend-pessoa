@@ -51,6 +51,9 @@ public class PessoaModel implements Serializable {
 		this.data_nascimento = data_nascimento;
 		this.id = id;
 	}
+	
+	
+	
 
 	public String getNome() {
 		return nome;

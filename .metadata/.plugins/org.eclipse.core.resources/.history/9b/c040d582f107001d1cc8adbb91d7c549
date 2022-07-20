@@ -36,6 +36,8 @@ public class EnderecoModel implements Serializable {
 		this.cidade = cidade;
 		this.tipo_endereco = tipo_endereco;
 	}
+	
+
 
 	public Integer getNumero() {
 		return numero;

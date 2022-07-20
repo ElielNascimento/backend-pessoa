@@ -1,0 +1,14 @@
+1658262997321	Copy package
+1658263012366	Rename type 'PessoaController'
+1658263021890	Rename type 'PessoaModel'
+1658263031757	Rename type 'PessoaRepository'
+1658263044498	Rename type 'PessoaService'
+1658263946390	Rename type 'EnderecoService'
+1658264376522	Copy file
+1658264650057	Copy file
+1658264693355	Copy file
+1658293109883	Extract constant 'NOME'
+1658293122634	Extract constant 'CPF'
+1658293135075	Extract constant 'EMAIL'
+1658293635760	Extract constant 'ID'
+1658295148316	Extract constant 'ID'

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PessoaServiceTest" project="api" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.backendattornatus.api.pessoaService.PessoaServiceTest" time="0.566" displayname="PessoaServiceTest" uniqueid="[engine:junit-jupiter]/[class:br.com.backendattornatus.api.pessoaService.PessoaServiceTest]">
+    <testcase name="listarTodasPessoas" classname="br.com.backendattornatus.api.pessoaService.PessoaServiceTest" time="0.566" displayname="listarTodasPessoas()" uniqueid="[engine:junit-jupiter]/[class:br.com.backendattornatus.api.pessoaService.PessoaServiceTest]/[method:listarTodasPessoas()]"/>
+  </testsuite>
+</testrun>

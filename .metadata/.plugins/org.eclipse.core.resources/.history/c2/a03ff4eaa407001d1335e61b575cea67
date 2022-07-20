@@ -1,0 +1,50 @@
+package br.com.backendattornatus.api.pessoa;
+
+import java.io.Serializable;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PessoaService implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Autowired
+	private PessoaRepository PessoaRepository;
+
+	public Page<PessoaModel> listarPessoas(Pageable pageable) {
+		Page<PessoaModel> response = PessoaRepository.findAll(pageable);
+		return response;
+	}
+
+	public PessoaModel salvarPessoa(PessoaModel PessoaModel) {
+		return PessoaRepository.save(PessoaModel);
+	}
+
+	public Optional<PessoaModel> buscarPessoaPeloId(Long id) throws Exception {
+		Optional<PessoaModel> Pessoa = PessoaRepository.findById(id);
+
+		if (Pessoa.isPresent()) {
+			return Pessoa;
+		} else {
+			throw new Exception("Você esta tentando buscar um Pessoa que não existe");
+		}
+	}
+
+	public PessoaModel atualizarDadosPessoa(Long id, PessoaModel newPessoa) {
+		PessoaModel pessoa = PessoaRepository.findById(id).get();
+		pessoa.setNome(newPessoa.getNome());
+		pessoa.setEmail(newPessoa.getEmail());
+
+		pessoa = PessoaRepository.save(pessoa);
+		return pessoa;
+	}
+
+	public void deletarPessoa(Long id) {
+		PessoaRepository.deleteById(id);
+	}
+
+}

@@ -1,0 +1,52 @@
+package br.com.backendattornatus.api;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import br.com.backendattornatus.api.endereco.EnderecoModel;
+import br.com.backendattornatus.api.endereco.EnderecoRepository;
+import br.com.backendattornatus.api.pessoa.PessoaModel;
+import br.com.backendattornatus.api.pessoa.PessoaRepository;
+
+@SpringBootApplication
+public class ApiApplication implements CommandLineRunner {
+
+	@Autowired
+	private PessoaRepository pessoaRepository;
+
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+
+	public static void main(String[] args) {
+		SpringApplication.run(ApiApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		PessoaModel p1 = new PessoaModel("Eliel Nascimento", "44775142046", "nascimento.eliel@gmail.com",
+				LocalDate.of(1992, 8, 6));
+		PessoaModel p2 = new PessoaModel("Pedro Nascimento", "53614771415", "pedro@gmail.com",
+				LocalDate.of(2005, 8, 4));
+		pessoaRepository.saveAll(Arrays.asList(p1, p2));
+
+		EnderecoModel end1 = new EnderecoModel("Av dos Palmares", 722, "Maringa");
+		EnderecoModel end2 = new EnderecoModel("Rua cuiába", 1075, "São Paulo");
+		EnderecoModel end3 = new EnderecoModel("Rua floripa", 075, "Santa catarina");
+		enderecoRepository.saveAll(Arrays.asList(end1, end2, end3));
+
+		p1.getEnderecos().add(end1);
+		p1.getEnderecos().add(end2);
+		
+		p2.getEnderecos().add(end3);
+	
+
+		pessoaRepository.saveAll(Arrays.asList(p1,p2));
+
+	}
+}

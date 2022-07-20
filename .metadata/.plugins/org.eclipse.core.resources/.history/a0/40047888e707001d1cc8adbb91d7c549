@@ -1,0 +1,5 @@
+package br.com.backendattornatus.api.pessoaService;
+
+public class PessoaServiceTest {
+
+}

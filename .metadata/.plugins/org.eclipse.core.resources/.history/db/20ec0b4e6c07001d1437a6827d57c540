@@ -1,0 +1,22 @@
+package br.com.backendattornatus.api.pessoa;
+
+import java.io.Serializable;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PessoaService implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Autowired
+	private PessoaRepository pessoaRepository;
+
+	public Page<PessoaModel> listarPessoas(Pageable pageable) {
+		Page<PessoaModel> response = pessoaRepository.findAll(pageable);
+		return response;
+	}
+
+}

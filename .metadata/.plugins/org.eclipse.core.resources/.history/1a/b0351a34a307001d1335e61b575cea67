@@ -1,0 +1,50 @@
+package br.com.backendattornatus.api.endereco;
+
+import java.io.Serializable;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EnderecoService implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Autowired
+	private EnderecoRepository pessoaRepository;
+
+	public Page<EnderecoModel> listarPessoas(Pageable pageable) {
+		Page<EnderecoModel> response = pessoaRepository.findAll(pageable);
+		return response;
+	}
+
+	public EnderecoModel salvarPessoa(EnderecoModel pessoaModel) {
+		return pessoaRepository.save(pessoaModel);
+	}
+
+	public Optional<EnderecoModel> buscarPessoaPeloId(Long id) throws Exception {
+		Optional<EnderecoModel> pessoa = pessoaRepository.findById(id);
+
+		if (pessoa.isPresent()) {
+			return pessoa;
+		} else {
+			throw new Exception("Você esta tentando buscar uma pessoa que não existe");
+		}
+	}
+
+	public EnderecoModel atualizarDadosPessoa(Long id, EnderecoModel newPessoa) {
+		EnderecoModel pessoa = pessoaRepository.findById(id).get();
+		pessoa.setNome(newPessoa.getNome());
+		pessoa.setEmail(newPessoa.getEmail());
+		pessoa = pessoaRepository.save(pessoa);
+		return pessoa;
+
+	}
+
+	public void deletarPessoa(Long id) {
+		pessoaRepository.deleteById(id);
+	}
+
+}

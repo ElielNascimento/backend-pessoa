@@ -1,0 +1,34 @@
+package br.com.backendattornatus.api.pessoaService;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import br.com.backendattornatus.api.pessoa.PessoaModel;
+import br.com.backendattornatus.api.pessoa.PessoaRepository;
+import br.com.backendattornatus.api.pessoa.PessoaService;
+
+@SpringBootTest
+public class PessoaServiceTest {
+
+	@Autowired
+	private PessoaService pessoaService;
+	
+	@Autowired
+	private PessoaRepository pessoaRepository;
+	
+	
+	private PessoaModel pessoaModel;
+	
+	private Optional<PessoaModel> optionalPessoa;
+	
+	
+	
+	void startProduto() {
+		pessoaModel = new PessoaModel();
+		optionalPessoa = new PessoaModel();
+	}
+	
+	
+}

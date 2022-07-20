@@ -1,0 +1,52 @@
+package br.com.backendattornatus.api.endereco;
+
+import java.io.Serializable;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EnderecoService implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+
+	public Page<EnderecoModel> listarenderecos(Pageable pageable) {
+		Page<EnderecoModel> response = enderecoRepository.findAll(pageable);
+		return response;
+	}
+
+	public EnderecoModel salvarEndereco(EnderecoModel enderecoModel) {
+		return enderecoRepository.save(enderecoModel);
+	}
+
+	public Optional<EnderecoModel> buscarEnderecoPeloId(Long id) throws Exception {
+		Optional<EnderecoModel> endereco = enderecoRepository.findById(id);
+
+		if (endereco.isPresent()) {
+			return endereco;
+		} else {
+			throw new Exception("Você esta tentando buscar uma endereco que não existe");
+		}
+	}
+
+	public EnderecoModel atualizarEndereco(Long id, EnderecoModel newEndereco) {
+		EnderecoModel endereco = enderecoRepository.findById(id).get();
+		endereco.setNome(newEndereco.getNome());
+		endereco.setCidade(newEndereco.getCidade());
+		endereco.setLogradouro(newEndereco.getLogradouro());
+		endereco.setNumero(newEndereco.getNumero());
+		endereco = enderecoRepository.save(endereco);
+		return endereco;
+
+	}
+
+	public void deletarendereco(Long id) {
+		enderecoRepository.deleteById(id);
+	}
+
+}

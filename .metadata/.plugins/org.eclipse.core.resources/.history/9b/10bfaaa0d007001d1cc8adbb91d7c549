@@ -1,0 +1,43 @@
+package br.com.backendattornatus.api;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import br.com.backendattornatus.api.endereco.EnderecoModel;
+import br.com.backendattornatus.api.endereco.EnderecoRepository;
+import br.com.backendattornatus.api.pessoa.PessoaModel;
+import br.com.backendattornatus.api.pessoa.PessoaRepository;
+
+@SpringBootApplication
+public class ApiApplication implements CommandLineRunner {
+	
+	@Autowired
+	private PessoaRepository pessoaRepository ; 
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+
+	public static void main(String[] args) {
+		SpringApplication.run(ApiApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+	
+		PessoaModel p1 = new  PessoaModel();
+		PessoaModel p2 = new  PessoaModel();
+		pessoaRepository.saveAll(Arrays.asList(p1,p2));
+		
+		
+		EnderecoModel end1 = new EnderecoModel();
+		EnderecoModel end2 = new EnderecoModel();
+		enderecoRepository.saveAll(Arrays.asList(end1,end2));
+		
+		
+	}
+
+}

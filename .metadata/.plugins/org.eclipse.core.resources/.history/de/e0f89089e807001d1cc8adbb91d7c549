@@ -1,0 +1,67 @@
+package br.com.backendattornatus.api.pessoaService;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import br.com.backendattornatus.api.pessoa.PessoaModel;
+import br.com.backendattornatus.api.pessoa.PessoaRepository;
+import br.com.backendattornatus.api.pessoa.PessoaService;
+
+@SpringBootTest
+public class PessoaServiceTest {
+
+	@InjectMocks
+	private PessoaService pessoaService;
+	
+
+	private PessoaRepository pessoaRepository;
+	
+	
+	private PessoaModel pessoaModel;
+	
+	private Optional<PessoaModel> optionalPessoa;
+	
+    @Test	
+	void listarTodasPessoasComSucesso() {
+		
+	}
+	
+    @Test	
+	void adicionarPessoasComSucesso() {
+		
+	}
+    
+    @Test	
+	void deletarPessoasComSucesso() {
+		
+	}
+	
+    @Test	
+ 	void atualizarPessoasComSucesso() {
+ 		
+ 	}
+ 	
+    @Test	
+ 	void buscarPessoasComSucessoPeloId() {
+ 		
+ 	}
+ 	
+    
+    
+    
+    
+    
+    
+	
+	
+	void startProduto() {
+		pessoaModel = new PessoaModel();
+		optionalPessoa = Optional.of(new PessoaModel());
+	}
+	
+	
+}

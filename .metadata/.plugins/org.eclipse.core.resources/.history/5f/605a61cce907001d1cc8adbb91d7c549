@@ -1,0 +1,81 @@
+package br.com.backendattornatus.api.pessoaService;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import br.com.backendattornatus.api.pessoa.PessoaModel;
+import br.com.backendattornatus.api.pessoa.PessoaRepository;
+import br.com.backendattornatus.api.pessoa.PessoaService;
+
+@SpringBootTest
+public class PessoaServiceTest {
+
+	private static final String EMAIL = "eliel_bn@gmail.com";
+
+
+	private static final String CPF = "47303955909";
+
+
+	private static final String NOME = "Eliel";
+
+
+	@InjectMocks
+	private PessoaService pessoaService;
+	
+
+	private PessoaRepository pessoaRepository;
+	
+	@Mock
+	private PessoaModel pessoaModel;
+	
+	private Optional<PessoaModel> optionalPessoa;
+	
+    @Test	
+	void listarTodasPessoasComSucesso() {
+    	Mockito.when(pessoaRepository.findById(Mockito.anyLong()).thenReturn(List.of(pessoaModel));
+    	
+		
+	}
+	
+    @Test	
+	void adicionarPessoasComSucesso() {
+		
+	}
+    
+    @Test	
+	void deletarPessoasComSucesso() {
+		
+	}
+	
+    @Test	
+ 	void atualizarPessoasComSucesso() {
+ 		
+ 	}
+ 	
+    @Test	
+ 	void buscarPessoasComSucessoPeloId() {
+ 		
+ 	}
+ 	
+    
+    
+    
+    
+    
+    
+	
+	
+	void startProduto() {
+		pessoaModel = new PessoaModel(NOME,CPF, EMAIL,LocalDate.now());
+		optionalPessoa = Optional.of(new PessoaModel(NOME,CPF, EMAIL,LocalDate.now()));
+	}
+	
+	
+}
